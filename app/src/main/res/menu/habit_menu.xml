@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="insert dummy data"
+        android:id="@+id/insert_dummy_data"
+        app:showAsAction="never">
+    </item>
+
+    <item android:title="delete all habits"
+        android:id="@+id/delete_all_habits"
+        app:showAsAction="never">
+    </item>
+</menu>

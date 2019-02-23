@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Editor">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/habits_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:text="Habit :"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textAppearance="?android:textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/habit_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:textColorHint="@android:color/holo_green_dark"
+            android:hint="enter your habit here" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/freequency_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="How often ?"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textAppearance="?android:textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/freequency_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"/>
+
+    </LinearLayout>
+
+</LinearLayout>

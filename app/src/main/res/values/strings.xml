@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">HabitTracker</string>
+    <string-array name="habit_freequency">
+        <item>select freequency</item>
+        <item>daily</item>
+        <item>once a week</item>
+        <item>twice a week</item>
+        <item>thrice a week</item>
+        <item>weekly</item>
+    </string-array>
+</resources>
