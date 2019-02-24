@@ -21,9 +21,9 @@ public class HabitDbHelper extends SQLiteOpenHelper {
 
          //This string has the sql statement to create a database table
          String SQL_CREATE_HABITS_TABLE = "CREATE TABLE " + HabitContract.HabitEntry.TABLE_NAME + " ("
-                + HabitContract.HabitEntry._ID + "INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + HabitContract.HabitEntry.COLUMN_HABIT + "TEXT NOT NULL,"
-                + HabitContract.HabitEntry.COLUMN_FREQUENCY + "INTEGER NOT NULL DEFAULT 0);";
+                + HabitContract.HabitEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + HabitContract.HabitEntry.COLUMN_HABIT + " TEXT NOT NULL,"
+                + HabitContract.HabitEntry.COLUMN_FREQUENCY + " INTEGER NOT NULL DEFAULT 0);";
 
          //this statement executes the string containing the sql create statement
          db.execSQL(SQL_CREATE_HABITS_TABLE);

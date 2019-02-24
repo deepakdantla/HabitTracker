@@ -39,16 +39,16 @@ public class HabitContract {
          */
         public static final int FREEQUENCY_SELECT = 0;
         public static final int FREEQUENCY_DAILY = 1;
-        public static final int FREEQUENCY_ONCE = 2;
-        public static final int FREEQUENCY_TWICE = 3;
-        public static final int FREEQUENCY_THRICE = 4;
+        public static final int FREEQUENCY_ONCE_A_WEEK = 2;
+        public static final int FREEQUENCY_TWICE_A_WEEK = 3;
+        public static final int FREEQUENCY_THRICE_A_WEEK = 4;
         public static final int FREEQUENCY_WEEKLY = 5;
 
 
         public static boolean isValidFreequency(int frequency) {
             if (frequency == FREEQUENCY_SELECT || frequency == FREEQUENCY_DAILY ||
-                    frequency == FREEQUENCY_ONCE || frequency == FREEQUENCY_TWICE
-                    || frequency == FREEQUENCY_THRICE || frequency == FREEQUENCY_WEEKLY ) {
+                    frequency == FREEQUENCY_ONCE_A_WEEK || frequency == FREEQUENCY_TWICE_A_WEEK
+                    || frequency == FREEQUENCY_THRICE_A_WEEK || frequency == FREEQUENCY_WEEKLY ) {
                 return true;
             }
             return false;

@@ -121,7 +121,7 @@ public class HabitProvider extends ContentProvider {
         final int match = sUriMatcher.match(uri);
         switch (match) {
             case HABITS:
-                return insertHabit(uri, contentValues);
+                return insertHabit(uri, values);
             default:
                 throw new IllegalArgumentException("Insertion is not supported for " + uri);
         }
@@ -168,14 +168,14 @@ public class HabitProvider extends ContentProvider {
         final int match = sUriMatcher.match(uri);
         switch (match) {
             case HABITS:
-                return updateHabit(uri, contentValues, selection, selectionArgs);
+                return updateHabit(uri, values, selection, selectionArgs);
             case HABIT_ID:
                 // For the HABIT_ID code, extract out the ID from the URI,
                 // so we know which row to update. Selection will be "_id=?" and selection
                 // arguments will be a String array containing the actual ID.
                 selection = HabitEntry._ID + "=?";
                 selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
-                return updateHabit(uri, contentValues, selection, selectionArgs);
+                return updateHabit(uri, values, selection, selectionArgs);
             default:
                 throw new IllegalArgumentException("Update is not supported for " + uri);
         }

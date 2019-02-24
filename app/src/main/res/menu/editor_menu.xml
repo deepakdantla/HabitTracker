@@ -7,4 +7,9 @@
         android:icon="@drawable/done"
         app:showAsAction="ifRoom">
     </item>
+
+    <item
+        android:id="@+id/action_delete"
+        android:title="@string/action_delete"
+        app:showAsAction="never" />
 </menu>
