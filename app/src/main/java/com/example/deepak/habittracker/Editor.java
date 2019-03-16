@@ -22,7 +22,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.deepak.habittracker.data.HabitContract;
 import com.example.deepak.habittracker.data.HabitContract.HabitEntry;
 
 public class Editor extends AppCompatActivity implements
@@ -73,7 +72,7 @@ public class Editor extends AppCompatActivity implements
         setContentView(R.layout.activity_editor);
 
         // Find all relevant views that we will need to read user input from
-        mHabitEditText =(EditText)  findViewById(R.id.habit_edit);
+        mHabitEditText = (EditText) findViewById(R.id.habit_edit);
         mFrequencySpinner = findViewById(R.id.freequency_spinner);
         // Examine the intent that was used to launch this activity,
         // in order to figure out if we're creating a new habit or editing an existing one.
@@ -98,8 +97,6 @@ public class Editor extends AppCompatActivity implements
             getLoaderManager().initLoader(EXISTING_HABIT_LOADER, null, this);
 
 
-
-
             // Setup OnTouchListeners on all the input fields, so we can determine if the user
             // has touched or modified them. This will let us know if there are unsaved changes
             // or not, if the user tries to leave the editor without saving.
@@ -108,7 +105,6 @@ public class Editor extends AppCompatActivity implements
 
 
         }
-
 
 
         /**
@@ -160,7 +156,7 @@ public class Editor extends AppCompatActivity implements
     }
 
     @Override
-    public boolean onCreateOptionsMenu (Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu options from the res/menu/editor_menu.xml file.
         // This adds menu items to the app bar.
         getMenuInflater().inflate(R.menu.editor_menu, menu);
@@ -170,7 +166,7 @@ public class Editor extends AppCompatActivity implements
     /**
      * Get user input from editor and save habit into database.
      */
-    private void savePet() {
+    private void saveHabit() {
         // Read from input fields
         // Use trim to eliminate leading or trailing white space
         String habitString = mHabitEditText.getText().toString().trim();
@@ -178,41 +174,23 @@ public class Editor extends AppCompatActivity implements
         // Check if this is supposed to be a new habit
         // and check if all the fields in the editor are blank
         ContentValues values = new ContentValues();
-        if(mCurrentHabitUri==null){//Add
 
-            if(!TextUtils.isEmpty(habitString) & mFrequency!=0){
-                // Create a ContentValues object where column names are the keys,
-                // and habit attributes from the editor are the values.
+        if (!TextUtils.isEmpty(habitString) && mFrequency != 0) {//modified just now
+            // Create a ContentValues object where column names are the keys,
+            // and habit attributes from the editor are the values.
 
-                values.put(HabitEntry.COLUMN_HABIT, habitString);
-                values.put(HabitEntry.COLUMN_FREQUENCY, mFrequency);
-            }
-            else{
-                Toast.makeText(this, "Enter all the fields", Toast.LENGTH_SHORT).show();
-                return;
-            }
+            values.put(HabitEntry.COLUMN_HABIT, habitString);
+            values.put(HabitEntry.COLUMN_FREQUENCY, mFrequency);
+        } else {
+            Toast.makeText(this, "Enter all the fields", Toast.LENGTH_SHORT).show();
+            return;
         }
 
 
-//        if (mCurrentHabitUri == null &&
-//                TextUtils.isEmpty(habitString) && mFrequency == HabitEntry.FREEQUENCY_SELECT
-//                ||mFrequency == HabitEntry.FREEQUENCY_SELECT) {
-//            // Since no fields were modified, we can return early without creating a new habit.
-//            // No need to create ContentValues and no need to do any ContentProvider operations.
-//            Toast.makeText(this, "Enter all the fields", Toast.LENGTH_SHORT).show();
-//            return;
-//        }
-//
-//        // Create a ContentValues object where column names are the keys,
-//        // and habit attributes from the editor are the values.
-//        ContentValues values = new ContentValues();
-//        values.put(HabitEntry.COLUMN_HABIT, habitString);
-//        values.put(HabitEntry.COLUMN_FREQUENCY, mFrequency);
-
-        // Determine if this is a new or existing pet by checking if mCurrentPetUri is null or not
+        // Determine if this is a new or existing Habit by checking if mCurrentPetUri is null or not
         if (mCurrentHabitUri == null) {
-            // This is a NEW pet, so insert a new pet into the provider,
-            // returning the content URI for the new pet.
+            // This is a NEW Habit, so insert a new pet into the provider,
+            // returning the content URI for the new Habit.
             Uri newUri = getContentResolver().insert(HabitEntry.CONTENT_URI, values);
 
             // Show a toast message depending on whether or not the insertion was successful.
@@ -226,10 +204,11 @@ public class Editor extends AppCompatActivity implements
                         Toast.LENGTH_SHORT).show();
             }
         } else {
-            // Otherwise this is an EXISTING pet, so update the pet with content URI: mCurrentPetUri
+            // Otherwise this is an EXISTING Habit, so update the habit with content URI: mCurrentHabitUri
             // and pass in the new ContentValues. Pass in null for the selection and selection args
-            // because mCurrentPetUri will already identify the correct row in the database that
+            // because mCurrentHabitUri will already identify the correct row in the database that
             // we want to modify.
+
             int rowsAffected = getContentResolver().update(mCurrentHabitUri, values, null, null);
 
             // Show a toast message depending on whether or not the update was successful.
@@ -246,13 +225,13 @@ public class Editor extends AppCompatActivity implements
     }
 
     @Override
-    public boolean onOptionsItemSelected (MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
         // User clicked on a menu option in the app bar overflow menu
         switch (item.getItemId()) {
             // Respond to a click on the "Save" menu option
             case R.id.save_habit:
                 // Save habit to database
-                savePet();
+                saveHabit();
                 // Exit activity
                 finish();
                 return true;
@@ -318,7 +297,6 @@ public class Editor extends AppCompatActivity implements
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
-
 
 
     /**
